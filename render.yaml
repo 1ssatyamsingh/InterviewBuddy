@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: interviewbuddy-server
+    runtime: node
+    plan: free
+    rootDir: server
+    buildCommand: npm install
+    startCommand: node index.js
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGODB_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: llama-3.3-70b-versatile
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
+        sync: false
+      - key: CLIENT_URL
+        sync: false
+      - key: DNS_SERVERS
+        value: 1.1.1.1,1.0.0.1
+      - key: OPENAI_API_KEY
+        sync: false
+
